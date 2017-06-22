@@ -1,0 +1,3 @@
+rootProject.name = 'animated_notification'
+
+include ':app'

@@ -24,7 +24,7 @@ export default class animated_notification extends Component {
         notification: this.state.value,
       },
       () => {
-        this._notification.measure((x, y, width, height, pageX, pageY) => {
+        this._notification.getNode().measure((x, y, width, height, pageX, pageY) => {
           this.state.offset.setValue(height * -1);
 
           Animated.sequence([
@@ -70,12 +70,13 @@ export default class animated_notification extends Component {
 
     return (
       <View style={styles.container}>
-        <Animated.View style={[styles.notification, notificationStyle]}>
-          <View ref={notification => this._notification = notification}>
-            <Text style={styles.notificationText}>
-              {this.state.notification}
-            </Text>
-          </View>
+        <Animated.View 
+          style={[styles.notification, notificationStyle]}
+          ref={notification => this._notification = notification}
+        >
+          <Text style={styles.notificationText}>
+            {this.state.notification}
+          </Text>
         </Animated.View>
 
         <View>

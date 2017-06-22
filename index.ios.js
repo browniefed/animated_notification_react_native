@@ -14,7 +14,7 @@ export default class animated_notification extends Component {
   state = {
     value: "",
     notification: "",
-    animation: new Animated.Value(0),
+    opacity: new Animated.Value(0),
     offset: new Animated.Value(0),
   };
   handlePress = () => {
@@ -30,7 +30,7 @@ export default class animated_notification extends Component {
           Animated.sequence([
 
             Animated.parallel([
-              Animated.timing(this.state.animation, {
+              Animated.timing(this.state.opacity, {
                 toValue: 1,
                 duration: 300,
               }),
@@ -43,7 +43,7 @@ export default class animated_notification extends Component {
             Animated.delay(1500),
 
             Animated.parallel([
-              Animated.timing(this.state.animation, {
+              Animated.timing(this.state.opacity, {
                 toValue: 0,
                 duration: 300,
               }),
@@ -60,7 +60,7 @@ export default class animated_notification extends Component {
   };
   render() {
     const notificationStyle = {
-      opacity: this.state.animation,
+      opacity: this.state.opacity,
       transform: [
         {
           translateY: this.state.offset,
